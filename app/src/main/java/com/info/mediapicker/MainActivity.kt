@@ -54,12 +54,14 @@ class MainActivity : AppCompatActivity() {
             setTitleTextColor(R.color.black) // Color of title text
             setListType(PickerDialog.ListType.TYPE_LIST)       // Type of the picker, must be PickerDialog.TYPE_LIST or PickerDialog.TYPE_Grid
             setItems(items)          // List of ItemModel-s which should be in picker
-        }.setPickerCloseListener { type: ItemType, uris: List<Uri> ->
+        }
+            .setPickerCloseListener { type: ItemType, uris: List<Uri> ->
+
             // Getting the result
             when (type) {
                 ItemType.Camera -> { showToast("Camera ${uris.size}") } // photo you've taken.
                 ItemType.Video ->{ showToast("Video") } // video you've recorded.
-                is ItemType.ImageGallery ->{ showToast("Image Gallery ${uris.size}") } /* images you've chosen */
+                is ItemType.ImageGallery -> { showToast("Image Gallery ${uris.size}") } /* images you've chosen */
                 is ItemType.AudioGallery -> { showToast("Audio Gallery ${uris.size}") }/* audios you've chosen */
                 is ItemType.VideoGallery -> { showToast("Video Gallery ${uris.size}") }/*  videos you've chosen */
                 is ItemType.Files -> { showToast("Files ${uris.size}") } /* the files you've chosen */
